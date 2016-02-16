@@ -1,0 +1,51 @@
+#non-scalable.block-container{
+	height: 900px;
+	max-height: calc(197px + 32px);
+	&.narrow{
+		width: 80vw;
+		max-width: 960px;
+		margin: 160px auto;;
+	}
+	&:before, &::before{
+		top: -64px;
+	}
+	&:after, &::after{
+		bottom: -40px;
+	}
+	.content-block{
+		@include transition(all 1s);
+		@include square(310px, 197px);
+		@include position(absolute, 0, 0);
+		margin:0 0 32px;
+		padding: 32px;
+		&:nth-child(2) {
+			@include transform(translateX(325px));
+		}
+		&:nth-child(3) {
+			@include transform(translateX(650px));
+		}
+	}
+	h3 {
+		font-size: 18px;
+		margin-bottom: calc(32px*2) ;
+	}
+	button{
+		@include position(absolute, null, null, 32px);
+		font-size: 14px;
+		padding: 8px 23px;
+	}
+	@media screen and (max-width: $L){
+		max-height: calc((197px + 32px)*3);
+		&.narrow{
+			max-width: 320px;
+		}
+		.content-block{
+			&:nth-child(2) {
+				@include transform(translate(0, 220px));
+			}
+			&:nth-child(3) {
+				@include transform(translate(0, 440px));
+			}
+		}
+	}
+}

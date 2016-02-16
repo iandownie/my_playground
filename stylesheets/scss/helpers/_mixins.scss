@@ -1,0 +1,223 @@
+// css properties
+// example: @include transition (all, 2.0s, ease-in-out);
+
+@mixin transition ($properties, $propertiesTwo) {
+	-webkit-transition: $properties, $propertiesTwo;
+  -moz-transition: $properties, $propertiesTwo;
+  -o-transition: $properties, $propertiesTwo;
+  transition: $properties, $propertiesTwo;
+}
+
+@mixin transform-scale ($amount,$amountTwo) {
+  -ms-transform: scale($amount,$amountTwo);
+  -webkit-transform: scale($amount,$amountTwo);
+  -moz-transform: scale($amount,$amountTwo);
+  -o-transform: scale($amount,$amountTwo);
+  transform: scale($amount,$amountTwo);
+}
+
+@mixin border-radius ($value) {
+	-webkit-border-radius: $value;
+	-moz-border-radius: $value;
+	-o-border-radius: $value;
+	border-radius: $value;
+}
+
+@mixin box-shadow ($box-shadow) {
+  -moz-box-shadow: $box-shadow;
+  -webkit-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+
+@mixin text-shadow ($text-shadows...) {
+  -moz-box-text-shadow: $text-shadows;
+  -webkit-text-shadow: $text-shadows;
+  text-shadow: $text-shadows;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+// media queries
+
+@mixin MQ($canvas) {
+  @if $canvas == XS {
+   @media only screen and (max-width: $XS) { @content; } 
+  }
+  @if $canvas == S {
+   @media only screen and (max-width: $S) { @content; } 
+  }
+  @else if $canvas == M {
+   @media only screen and (max-width: $M) { @content; } 
+  }
+  @else if $canvas == L {
+   @media only screen and (max-width: $L) { @content; } 
+  }
+}
+
+@mixin position($position, $top: null, $left: null, $bottom: null, $right: null) {
+  position: $position;
+  top: $top;
+  left: $left;
+  bottom: $bottom;
+  right: $right;
+}@mixin background-size($arg){
+  background-size: $arg;
+  -webkit-background-size: $arg;
+  -moz-background-size: $arg;
+  -o-background-size: $arg;
+}@mixin background($src, $repeat:null, $size: null, $positon: null) {
+  background-repeat: $repeat;
+  background-image: url($src);
+  @include background-size($size);
+  background-position: $positon;
+}@mixin opacity($opacity){
+  @if $opacity == 0{
+    filter: alpha(opacity=0);
+  }
+  @if $opacity == 1{
+    filter: alpha(opacity=100);
+  }
+  opacity: $opacity;
+  -moz-opacity: $opacity;
+  -ms-opacity: $opacity;
+  -webkit-opacity: $opacity;
+}@mixin rotate($deg){
+  transform: rotate($deg);
+  -webkit-transform:rotate($deg);
+  -ms-transform:rotate($deg);
+}@mixin transition($transition...) {
+  $prefixes: ("-webkit-", "-ms-", "-o-",  "");
+  @each $prefix in $prefixes {
+    #{$prefix}transition: $transition;
+  }
+}@mixin transform($transform){
+  transform:$transform;
+  -webkit-transform:$transform;
+  -ms-transform:$transform;
+}@mixin filter($filter){
+  -webkit-filter:$filter;
+  filter:$filter;
+}@mixin transform-origin($transform){
+  transform-origin:$transform;
+  -webkit-transform-origin:$transform;
+  -ms-transform-origin:$transform;
+}@mixin translate($X: null, $Y:null){
+  transform:translate($X, $Y);
+  -webkit-transform:translate($X, $Y);
+  -ms-transform:translate($X, $Y);
+}@mixin justify($position, $direction: row){
+  -webkit-box-pack:$position;
+  -webkit-justify-content:$position;
+  -ms-flex-pack:$position;
+  justify-content:$position;
+  @if $direction == "row"{
+    -webkit-box-orient: horizontal;
+  }
+  @if $direction == "column"{
+    -webkit-box-orient: vertical;
+  }
+  -webkit-flex-direction: $direction;
+   -webkit-box-direction: normal;
+      -ms-flex-direction: $direction;
+          flex-direction: $direction;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}@mixin box-shadow($args...){
+  -webkit-box-shadow: $args;
+  -moz-box-shadow: $args;
+  box-shadow: $args;
+}@mixin box-sizing($args:border-box){
+  box-sizing:$args;
+  -moz-box-sizing:$args;
+  -webkit-box-sizing:$args;
+}@mixin gradient($start, $gradient...){
+  @if $start == top {
+    $direction: bottom;
+  } @else if $start == right {
+    $direction: left;
+  } @else if $start == bottom {
+    $direction: top;
+  } @else {
+    $direction: right;
+  }
+  background: -moz-linear-gradient($start, $gradient); /* FF3.6+ */
+  background: -webkit-linear-gradient($start, $gradient); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient($start, $gradient); /* Opera 11.10+ */
+  background: -ms-linear-gradient($start, $gradient); /* IE10+ */
+  background: linear-gradient(to $direction, $gradient); /* W3C */
+}@mixin user-select($arg:none){
+  -webkit-user-select: $arg;  /* Chrome all / Safari all */
+  -moz-user-select: $arg; /* Firefox all */
+  -ms-user-select: $arg;  /* IE 10+ */
+  user-select: $arg;  
+}@mixin border-radius($args...){
+  -webkit-border-radius: $args;
+  -moz-border-radius: $args;
+  border-radius: $args;
+}@mixin animation($args){
+  -webkit-animation: $args; 
+  -moz-animation: $args; 
+  -o-animation: $args;
+  animation: $args;
+}@mixin format-background($arg, $arg2: null, $arg3: contain){
+  background-image: url($arg);
+  background-size: $arg3;
+  background-position: center $arg2;
+  background-repeat: no-repeat;
+}@mixin square($w,$h:$w) {
+  width: $w;
+  height: $h;
+}@mixin borderRadius ($radius: 3px) {
+  -webkit-border-radius:$radius;
+  -moz-border-radius:$radius;
+  border-radius:$radius;
+}@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}@mixin inlineBlock($h) {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  _height: $h;
+}@mixin center($direction: vertical) {
+  @if $direction=='vertical'{
+    @include transform(translateY(-50%));
+    @include position(relative, 50%);
+  }
+  @if $direction=='horizontal'{
+    @include transform(translateX(-50%));
+    @include position(relative, null, 50%);
+  }
+  @if $direction=='both'{
+    @include transform(translate(-50%, -50%));
+    @include position(relative, 50%, 50%);
+  }
+}@mixin prefixProperty($property, $value) {
+  $prefixes: ("-webkit-", "-moz-","-ms-", "-o-",  "");
+  @each $prefix in $prefixes {
+    #{$prefix}#{$property}: $value;
+  }
+}@mixin prefixValue($property, $value) {
+  $prefixes: ("-webkit-", "-moz-","-ms-", "-o-",  "");
+  @each $prefix in $prefixes {
+    #{$property}: #{$prefix}#{$value};
+  }
+}

@@ -1,0 +1,28 @@
+.content{
+	font-size: 1vw;
+	width: calc(67.2em + #{$grid-spacer});
+	margin: auto;
+	position: relative;
+	&.separated{
+		&:before, &::before, &:after, &::after{
+			content: " ";
+			@include position(absolute, null, 0);
+			@include square(calc(100%), 2px);
+			background: #dedede;
+			left: 0;
+		}
+	}
+	.content-block{
+		float:left;
+		background-color: $color-white;
+	}
+	h3{
+		letter-spacing: 0.54;
+		line-height: 1.333;
+		font-weight: 700;
+	}
+}
+
+.justified{
+	@include justify(center, row);
+}

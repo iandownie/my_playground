@@ -1,0 +1,46 @@
+.img-src {
+    position: fixed;
+    background-position: center;
+    -webkit-background-size: cover;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.img-blur {
+  opacity: 0;
+}
+
+header {
+  @include square(100%, 60px);
+  position: relative;
+  overflow: hidden;
+  a img{
+      position: absolute;
+      top: 40px;
+      left: calc((100vw - 1015px)/2);
+  }
+  @media screen and (max-width: 1120px) {
+    a img{
+      position: absolute;
+      left: 20px;
+      top: 20px;
+    }
+    .line{
+      display: none;
+    }
+    .greeting-wrap {
+      top: calc(50% + 40px);
+      img{
+        max-width: calc(140vw - 15px);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      p{
+        max-width: 80vw;
+      }
+    }
+  }
+}

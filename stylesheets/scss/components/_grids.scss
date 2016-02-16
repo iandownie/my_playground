@@ -1,0 +1,135 @@
+.grid-container{
+	@include transition(max-height 1s);
+	position: relative;
+	padding:  0;
+	overflow: hidden;
+	margin: 3.2em 0 11em;
+	max-height: 0;
+}
+
+.detector{ /* these detect when more images should be loaded */
+	@include position(fixed, null, null, 0);
+}
+.detector-two{
+	@include position(absolute, null, null, 0);
+}
+
+.grid-five{
+	h2{
+		letter-spacing: .75;
+	}
+	.grid-element{
+		@include position(relative);
+		@include square(calc((#{$grid-spacer} + #{$content-width-large})/5 - #{$grid-spacer}));
+		margin: 0 calc(#{$grid-spacer}/2) $grid-spacer;
+		float:left;
+		img{
+			@include position(absolute, 0, 0);
+			@include square(100%);
+		}
+		.overlay{
+			@include position(absolute, 0, 0);
+			@include square(calc((#{$grid-spacer} + #{$content-width-large})/5 - #{$grid-spacer}));
+			@include opacity(0);
+			@include transition(all 1s);
+			@include prefixProperty(perspective, 1000);
+			@include prefixProperty(transform-style, preserve-3d);
+			-webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+			backface-visibility: hidden;
+			&:hover{
+				@include opacity(1);
+				@include transform(translate(0.5333em,0.5333em));
+			}
+			&.flipped{
+				@include opacity(1);
+				@include transform(translate(0.5333em,0.5333em) rotateY(180deg));
+			}
+			.magnifier{
+				background-color: $color-brand-contrast;
+				@include justify(space-between, column);
+				height: 100%;
+				padding: 2.533em;
+				-webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+				backface-visibility: hidden;
+				&.reverse{
+					@include position(relative, -100%, 0);
+					@include square(100%);
+					@include transform(rotateY(180deg));
+					justify-content: center;
+					padding: 0 0.8666em;
+				}
+			}
+			h3{
+				font-size: 1.2em;
+				text-align: center;
+				color: $color-white;
+				margin: -0.2em 0 -0.24em;
+				&.grid-item-fact{
+					text-transform: none;
+					font-family: $didact;
+					font-size: 1.0666em;
+					line-height: 1.25;
+					font-weight: 100;
+					letter-spacing: 0;
+				}
+			}
+			button{
+				width: 7.333em;
+				font-size: 0.93333em;
+				letter-spacing: 0;
+				padding: 0;
+				height: 2.666em;
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+#view-more{
+	@include position(absolute, null, null, 60px);
+	width: 100%;
+	.loader{
+		background-image: url(/_assets/images/loader.png);
+		@include square(30px);
+		background-size: cover;
+		@include position(absolute, null, calc(50% - 15px));
+		animation-name: spin;
+		animation-iteration-count: infinite;
+		animation-duration: 3s;
+		animation-timing-function: linear;
+	}
+}
+#grid-photo > .magnifier{
+	@media screen and (max-width: $M){
+		font-size: calc(3em);
+	}
+	@media screen and (max-width: $S){
+		font-size: calc(4em);
+	}
+}
+
+.grid-five .grid-element,.grid-five .grid-element .overlay{
+	@media screen and (max-width: $L){
+		@include square(calc((#{$grid-spacer} + #{$content-width-large})/4 - #{$grid-spacer}));
+		.magnifier{
+			font-size: 1.2em;
+		}
+	}
+	@media screen and (max-width: $M){
+		@include square(calc((#{$grid-spacer} + #{$content-width-large})/6 - #{$grid-spacer}));
+		.magnifier{
+			font-size: 0.8em;
+		}
+	}
+	@media screen and (max-width: $S){
+		@include square(calc((#{$grid-spacer} + #{$content-width-large})/4 - #{$grid-spacer}));
+		.magnifier{
+			font-size: 1.2em;
+		}
+	}
+}
+
+@keyframes spin {
+    from {transform: rotateZ(0deg);}
+    to {transform: rotateZ(360deg);}
+}

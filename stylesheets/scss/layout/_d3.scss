@@ -1,0 +1,82 @@
+body { 
+    font: 12px Arial;
+    &.d3{
+        padding: 0 calc(-100px + 20vw);
+        background: black;
+    }
+}
+
+path { 
+    stroke-width: 6px;
+    fill: none;
+    transition: all 1s;
+}
+
+g{
+    font-family: 'Unica One', cursive;
+}
+
+.axis, .label{
+    font-size: calc(55px - 1vw);
+    fill: white;
+    path, line {
+        fill: none;
+        stroke: grey;
+        stroke-width: 1;
+    }
+}
+
+.grid .tick {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+.grid path {
+    stroke-width: 0;
+}
+
+input.year-slider{
+    position: absolute;
+}
+
+.chart-title{
+    font-size: calc(70px - 1vw);
+}
+
+text.line{
+    @include text-shadow(black 0px 0px 3px, black 0px 0px 3px,black 0px 0px 3px,black 0px 0px 3px);
+}
+text.energy_type, text.line, text.wipe{
+    font-size: calc(45px - 1vw);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.radio-frame{
+    stroke:$color-white;
+    stroke-width:5px;
+    fill:darken(white, 10%);
+    @include border-radius(100%);
+}
+
+circle{
+    @include transition(all 0.5s);
+    &.radio-button-frame{
+        fill:silver;
+        @include transform(translateX(0));
+    }
+    &.radio-button{
+        cursor: pointer;
+        fill:red;
+        @include transform(translateX(0));
+        &:hover{
+            fill:darken(red, 10%);
+        }
+        &.on{
+            fill:green;
+            &:hover{
+                fill:darken(green, 10%);
+            }
+        }
+    }
+}

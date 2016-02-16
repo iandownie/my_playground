@@ -1,0 +1,62 @@
+#scalable.block-container{
+	font-size: $myems;
+	@include prefixProperty(flex-wrap, wrap);
+	@include prefixValue(display, flex);
+	&.narrow{
+		width: calc(64em);
+		max-width: calc(64em);
+		margin: calc(2 * #{$space-amount}) auto calc(4.8em - 2.133em);
+	}
+	&:before, &::before{
+		top: calc(-2 * #{$space-amount});
+	}
+	&:after, &::after{
+		bottom: calc(-1 * (4.8em - 2.133em));
+	}
+	.content-block{
+		@include square(calc((100% - #{$content-box-separation})/3), 13.4666em);
+		margin: 0 calc(#{$content-box-separation}/3) $space-amount;
+		position: relative;
+		padding: #{$space-amount};
+		&:nth-child(1){
+			margin-right: calc(#{$content-box-separation}/6); 
+			margin-left: 0;
+		}
+		&:nth-child(3){
+			margin-left: calc(#{$content-box-separation}/6);
+			margin-right: 0;
+		}
+	}
+	h3 {
+		font-size: 1.2em;
+		height: 4.33em;
+		margin: -0.2em 0 -0.24em;
+	}
+	button{
+		@include square(8.4em,2.666em);
+		@include position(absolute, null, #{$space-amount}, #{$space-amount});
+		padding: 0 0;
+		transform: none;
+		margin-top: 40px;
+	}
+	@media screen and (max-width: $L){
+		font-size: calc(4px + 1vw);
+	}
+	@media screen and (max-width: $M){
+		font-size: calc(10px + 1vw);
+		&.narrow{
+			width: 80vw;
+			.content-block{
+				margin: 0 0 $space-amount;
+				height: auto;
+				width: 100%;
+			}
+		}
+		h3{
+			height: auto;
+		}
+		button{
+			position: initial;
+		}
+	}
+}

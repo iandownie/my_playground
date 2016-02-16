@@ -1,0 +1,52 @@
+h1, h2, h3, h4, h5, h6, p, a {
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: $sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  line-height: 1.2em;
+  letter-spacing: .15em;
+}
+
+
+
+h2 {
+  font-size: 2em;
+  margin: -0.2em 0 -0.24em;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+p {
+  font-family: $serif;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 0.75em;
+  color: $color-white;
+  letter-spacing: .035em;
+  line-height: 1.5em;
+  text-align: justify;
+
+  @include MQ(L) {
+      font-size: 16em;
+
+    }
+  
+}
+
+a {
+  text-decoration: none;
+  color: $color-brand-secondary;
+}
+
+
+small {
+  font-size: .6em;
+  vertical-align: top;
+  line-height: 56px;
+}
