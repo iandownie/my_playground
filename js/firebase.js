@@ -10,7 +10,6 @@ $('#stakeHoldersInput').keypress(function (e) {
 });
 
 myDataRef.on('child_added', function(snapshot) {
-	console.log('test1');
 	var data = snapshot.val();
 	var verdict='';
 	if(data.stakeHolders<2 && data.importance<2){
@@ -22,7 +21,6 @@ myDataRef.on('child_added', function(snapshot) {
 });
 
 function displayChatMessage(verdict) {
-	console.log('test2');
 	$('<div/>').text(verdict).appendTo($('#messagesDiv'));
 	// .prepend($('<em/>').text(stakeHolders+': '));
 	$('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;

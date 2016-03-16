@@ -9,17 +9,39 @@
     <link rel="shortcut icon" type="image/x-icon" href="_assets/favicon.ico">
     <link rel="stylesheet" href="stylesheets/css/main.css">
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/jquery.cycle2.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/d3.js"></script>
   </head>
-  <body>
+  <body ng-app="CDMApp" ng-controller="myCtrl">
 
     <div id='messagesDiv'></div>
-    <div>Number of Stakeholders:</div>
-    <input type='number' id='stakeHoldersInput' min='2' max ='10'>
-    <div>Importance of decision:</div>
-    <input type='range' id='importanceInput' min='1', max='10'>
-    <script src="js/firebase.js"></script>
+    <form name="myForm" ng-show='d3Ready===false'>
+        <h2>Question to Determine:</h2>
+        <input type='text' id='question' ng-model="question">
+        <h2>Number of Stakeholders:</h2>
+        <input type='number' id='stakeHoldersInput' min='2' max ='200' required ng-model="stakeholders">
+        <h2>Type of Decision</h2>
+        <select ng-options="decision as decision.label for decision in decisions track by decision.id" ng-model="decision" required></select>
+<!--         <h2>Number of Options:{{optionCount}}</h2>
+        <input type='range' id='optionCount' min='1', max='10' required ng-model="optionCount">
+        <span ng-bind="optionCount"></span>
+ -->        <div ng-repeat="i in getNumber(options) track by $index">
+            <h3>Option: {{$index+1}}</h3>
+            <input type="text"  required ng-model="options[$index]">
+            <button ng-click="options.splice($index,1)">Remove Option</button>
+        </div>
+        <button ng-click="options.push('new option')" ng-hide="options.length>9">Add Option</button>
+        <button ng-click="submitQuestion()" ng-show="myForm.$valid">Submit Question</button>
+    </form>
+    <div ng-show="d3Ready">
+        <button ng-click="d3Ready=false">Reset App</button>
+        <script src="js/firebase2.js"></script>
+        <section id="" class="d3 firebase-d3 content narrow block-container clearfix"><script src="js/d3-firebase.js"></script></section>
+    </div>
   </body>
+  <script src="js/myApp.js"></script>
+  <script src="js/myCtrl.js"></script>
 </html>

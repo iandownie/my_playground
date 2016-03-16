@@ -4014,4 +4014,10 @@ circle.radio-button.on:hover {
   fill: #004d00;
 }
 
+.firebase-d3 text {
+  fill: white;
+  text-shadow: 0px 0px 5px #000000;
+  font-size: 3em;
+}
+
 /*# sourceMappingURL=main.css.map */
