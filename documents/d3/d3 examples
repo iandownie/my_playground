@@ -1,0 +1,61 @@
+https://www.jasondavies.com/maps/azimuth-distance/
+https://www.jasondavies.com/maps/clip/
+https://www.jasondavies.com/wordtree/
+
+http://bl.ocks.org/mbostock/4060606
+http://bl.ocks.org/mbostock/1153292
+http://bl.ocks.org/mbostock/3231298
+
+http://bost.ocks.org/mike/nations/
+
+http://www.nytimes.com/interactive/2012/11/02/us/politics/paths-to-the-white-house.html
+http://www.nytimes.com/interactive/2012/09/06/us/politics/convention-word-counts.html#Better
+http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html
+
+13/633 data points:
+http://www.vote4energy.org/all-of-the-aboveenergystatemap/
+
+71,604 data points:
+http://testsite.loc/D3.HTML
+
+D3 Assists: 
+
+Parsing date/times
+Highly efficient standard practices for working with SVGs (sizing, placement)
+Updating SVG elements
+Scales (linear, time based, ordinal, ect)
+Axis
+Object Manipulation, such as nesting, filtering, and sorting
+Data querying, such as finding min/max/som, mean, median, or even much more complicated values such as variance and deviation.
+Importing data (From CSV or several other data structures)
+Is javascript, plays nice with jQuery
+
+A lot more:
+
+Stacking:
+	http://bl.ocks.org/mbostock/4060954
+
+Pie charts:
+	https://github.com/mbostock/d3/wiki/Pie-Layout
+
+Tree layouts:
+	http://bl.ocks.org/mbostock/4063550
+
+Brushing: 
+	http://bl.ocks.org/mbostock/1667367
+
+Geographic plotting, Zooming, Dragging:
+	http://bl.ocks.org/mbostock/5914438
+
+Hulls:
+	http://bl.ocks.org/mbostock/4341699
+
+Projections
+	http://bl.ocks.org/mbostock/3757125
+
+Force Effects:
+	http://bl.ocks.org/mbostock/4062045
+
+
+D3.js is a JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, SVG, and CSS. D3’s emphasis on web standards gives you the full capabilities of modern browsers without tying yourself to a proprietary framework, combining powerful visualization components and a data-driven approach to DOM manipulation.
+

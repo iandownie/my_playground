@@ -34,10 +34,13 @@
             <button ng-click="options.splice($index,1)">Remove Option</button>
         </div>
         <button ng-click="options.push('new option')" ng-hide="options.length>9">Add Option</button>
-        <button ng-click="submitQuestion()" ng-show="myForm.$valid">Submit Question</button>
+        <button ng-click="d3Ready=true">View D3</button>
+        <button ng-click="submitQuestion()" ng-show="myForm.$valid" class='submit-question'>Submit Question</button>
     </form>
     <div ng-show="d3Ready">
-        <button ng-click="d3Ready=false">Reset App</button>
+        <button ng-click="d3Ready=false">View Form</button>
+        <button ng-click="d3Ready=false" class="reset-app">Reset App</button>
+        <button class='random-vote' ng-click="randomVote()">Vote Randomly</button>
         <script src="js/firebase2.js"></script>
         <section id="" class="d3 firebase-d3 content narrow block-container clearfix"><script src="js/d3-firebase.js"></script></section>
     </div>
