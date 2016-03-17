@@ -1,33 +1,25 @@
 .img-src {
-    position: fixed;
+  @include position(fixed, 0, 0, 0, 0);
     background-position: center;
     -webkit-background-size: cover;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     z-index: -1;
 }
 
 .img-blur {
-  opacity: 0;
+  @include opacity(0);
 }
 
 header {
-  @include square(100%, 60px);
+  @include square(100%, 6em);
   @include justify(space-around);
   position: relative;
   overflow: hidden;
   a img{
-      position: absolute;
-      top: 40px;
-      left: calc((100vw - 1015px)/2);
+    @include position(absolute, 40px, calc((100vw - 1015px)/2));
   }
   @media screen and (max-width: 1120px) {
     a img{
-      position: absolute;
-      left: 20px;
-      top: 20px;
+      @include position(absolute, 20px, 20px);
     }
     .line{
       display: none;
@@ -37,7 +29,7 @@ header {
       img{
         max-width: calc(140vw - 15px);
         left: 50%;
-        transform: translateX(-50%);
+        @include transform(translateX(-50%))
       }
       p{
         max-width: 80vw;

@@ -1,9 +1,6 @@
-body { 
-    font: 12px Arial;
-    &.d3{
-        padding: 0 calc(-100px + 20vw);
-        background: black;
-    }
+body.d3{
+    padding: 0 calc(-100px + 20vw);
+    background: black;
 }
 
 path { 

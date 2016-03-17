@@ -3624,22 +3624,26 @@ input[type=range]:focus::-ms-fill-upper {
 }
 .img-src {
   position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
   background-position: center;
   -webkit-background-size: cover;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   z-index: -1;
 }
 
 .img-blur {
+  filter: alpha(opacity=0);
   opacity: 0;
+  -moz-opacity: 0;
+  -ms-opacity: 0;
+  -webkit-opacity: 0;
 }
 
 header {
   width: 100%;
-  height: 60px;
+  height: 6em;
   -webkit-box-pack: space-around;
   -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
@@ -3664,8 +3668,8 @@ header a img {
 @media screen and (max-width: 1120px) {
   header a img {
     position: absolute;
-    left: 20px;
     top: 20px;
+    left: 20px;
   }
   header .line {
     display: none;
@@ -3677,6 +3681,8 @@ header a img {
     max-width: calc(140vw - 15px);
     left: 50%;
     transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
   }
   header .greeting-wrap p {
     max-width: 80vw;
@@ -3707,6 +3713,10 @@ header a.button {
   padding: 0;
 }
 
+body {
+  font-size: 1vw;
+}
+
 .content {
   font-size: 1vw;
   width: calc(67.2em + 0.8em);
@@ -3720,7 +3730,6 @@ header a.button {
   width: calc(100%);
   height: 2px;
   background: #dedede;
-  left: 0;
 }
 .content .content-block {
   float: left;
@@ -3954,9 +3963,6 @@ footer {
   .block-container .content-block:nth-child(1), .block-container .content-block:nth-child(2), .block-container .content-block:nth-child(3) {
     margin: 0 0 30px;
   }
-}
-body {
-  font: 12px Arial;
 }
 body.d3 {
   padding: 0 calc(-100px + 20vw);

@@ -21,7 +21,7 @@
   <body ng-app="CDMApp" ng-controller="myCtrl">
     <div class='container'></div>
     <div id='messagesDiv'></div>
-    <form name="myForm" ng-show='d3Ready===false'>
+    <form name="myForm" ng-show='d3Ready===false' class="animated fadeIn">
         <h2>Question to Determine:</h2>
         <input type='text' id='question' ng-model="question">
         <h2>Number of Stakeholders:</h2>
@@ -38,14 +38,20 @@
         </div>
         <button ng-click="options.push('new option')" ng-hide="options.length>9">Add Option</button>
         <button ng-click="d3Ready=true">View D3</button>
-        <button ng-click="submitQuestion()" ng-show="myForm.$valid" class='submit-question'>Submit Question</button>
+        <button ng-click="submitQuestion()" ng-show="myForm.$valid" class='submit-question animated fadeIn'>Submit Question</button>
     </form>
-    <div ng-show="d3Ready">
+    <div ng-show="d3Ready" class="animated fadeIn">
+        <form name="select">
+            <label>Select Question</label>
+            <select ng-options="question as question.title for question in questions track by question.date" ng-model="chosenQuestion" required></select>
+            <button ng-click="selectQuestion()" ng-show="select.$valid" class='button animated fadeIn'>View Poll</button>
+        </form>
         <button ng-click="d3Ready=false">View Form</button>
         <button ng-click="d3Ready=false" class="reset-app">Reset App</button>
-        <button class='random-vote' ng-click="randomVote()">Vote Randomly</button>
+        <!-- <button class='random-vote' ng-click="randomVote()">Vote Randomly</button> -->
         <script src="js/firebase2.js"></script>
         <section id="" class="d3 firebase-d3 content narrow block-container clearfix"><script src="js/d3-firebase.js"></script></section>
+        <button ng-click="deletePoll()" ng-show="chosenQuestion!==''" class="button animated fadeIn">Delete Poll "{{chosenQuestion.title}}"</button>
     </div>
   </body>
   <script src="js/myApp.js"></script>

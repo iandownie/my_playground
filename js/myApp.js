@@ -13,11 +13,21 @@ app.controller('myCtrl', function($scope) {
     id: 1,
     label: 'Poll',
     subItem: { name: 'poll' }
-  }, {
-    id: 2,
-    label: 'Random',
-    subItem: { name: 'random' }
-  }];
+  }, 
+  // {
+  //   id: 2,
+  //   label: 'Random',
+  //   subItem: { name: 'random' }
+  // }
+  ];
+  $scope.chosenQuestion='';
+  $scope.questions={};
+  fb.on("value", function(snapshot) {
+    $scope.questions=snapshot.val();
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+
   //Creates default options
   $scope.getOptions=function(){
     var array=[];
@@ -32,6 +42,15 @@ app.controller('myCtrl', function($scope) {
     return options;
   };
 
+  // Feeds D3 with selected question's data
+  $scope.selectQuestion = function(){
+    task=$scope.chosenQuestion;
+    myDataRef = new Firebase('https://scorching-heat-2457.firebaseio.com/-'+task.hash);
+    wipeD3();
+    build();
+    keepUpdated();
+  };
+
   //Submits a new question, initiating a new poll.
   $scope.submitQuestion = function(){
     var theOptions=[];
@@ -44,16 +63,42 @@ app.controller('myCtrl', function($scope) {
         name: 'poll',
         winCondition: 'plurality',
         participantCount: $scope.stakeholders
-    },
-    options: theOptions,
-    title: $scope.question,
-    date: Date.now() - 3600 * 1000 * 24 * 1, // 1 days ago
-    hash: hash
+      },
+      options: theOptions,
+      title: $scope.question,
+      date: Date.now() - 3600 * 1000 * 24 * 1, // 1 days ago
+      hash: hash
     };
-    fb.set(theQuestion);
+    var newQuestionRef = fb.push();
+    var path = newQuestionRef.toString();
+    var ID = path.split('/-')[1];
+    theQuestion.hash=ID;
+    newQuestionRef.set(theQuestion);
     $scope.d3Ready=true;
+    $scope.updateQuestions();
   };
+
+  // Delete the selected question
+  $scope.deletePoll=function(){
+    myDataRef=new Firebase('https://scorching-heat-2457.firebaseio.com/-'+$scope.chosenQuestion.hash);
+    myDataRef.remove();
+    $scope.chosenQuestion='';
+    wipeD3();
+    task={};
+  };
+
   
+  //updates questions when new ones are made 
+  $scope.updateQuestions=function(){
+    fb.once("value", function(snapshot) {
+      $scope.questions=snapshot.val();
+      // build();
+      // keepUpdated();
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+  };
+
   // Votes for a random option
   $scope.randomVote = function(){
     randomVoter();
