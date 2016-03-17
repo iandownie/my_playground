@@ -15,6 +15,7 @@
 
 header {
   @include square(100%, 60px);
+  @include justify(space-around);
   position: relative;
   overflow: hidden;
   a img{
@@ -42,5 +43,12 @@ header {
         max-width: 80vw;
       }
     }
+  }
+  a.button{
+    @include center(vertical);
+    @include justify(center, column);
+    @include square(20em, 60%);
+    left:0;
+    padding:0;
   }
 }

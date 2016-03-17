@@ -7,6 +7,8 @@ function init(){
     buildPage(pageData.testPage);
     cardFlip();
     viewMore();
+  }else{
+    sectionImports();
   }
 }
 
