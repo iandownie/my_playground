@@ -54,7 +54,7 @@
 	}
 	svg{
 		min-height: 40em;
-		[data-option]{
+		[data-option], .reset-votes{
 			cursor: pointer;
 		}
 	}

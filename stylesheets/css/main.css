@@ -4152,7 +4152,7 @@ circle.radio-button.on:hover {
 .firebase-d3 svg {
   min-height: 40em;
 }
-.firebase-d3 svg [data-option] {
+.firebase-d3 svg [data-option], .firebase-d3 svg .reset-votes {
   cursor: pointer;
 }
 

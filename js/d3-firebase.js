@@ -237,7 +237,7 @@ function build(){
 
 		//  Creates reset votes button (Adds to SVG, but may be inefficient)
 	chart.append('text')
-		.attr('y', height + 180)
+		.attr('y', height + 600)
 		.attr('x', width/2)
 		.attr('class', 'reset-votes')
 		.style('text-anchor', 'middle')
@@ -245,7 +245,7 @@ function build(){
 
 		//Title of chart
 	chart.append('text')
-		.attr('y', 0 )
+		.attr('y', -50 )
 		.attr('x', width/2 )
 		.style('text-anchor', 'middle')
 		.text(task.title);
@@ -260,10 +260,12 @@ function build(){
 		.style('fill', function(d, i) { return range[i]; })
 		.style('opacity', 1);
 	bar.append("text")
-		.attr("x", barWidth*0.25 )
-		.attr("y", function(d) { return height; })
+		.attr("x", 810 )
+		.attr("y", function(d) { return 760; })
 		.attr("dy", ".75em")
 		.attr('data-option', function(d, i){ return i; })
+		.attr('text-anchor', 'start')
+		.attr("transform", "rotate(45)")
 		.text(function(d) { return d.name; });
 
 	// Registers functions that need to come after the above elements are created.
