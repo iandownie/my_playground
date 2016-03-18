@@ -14,11 +14,11 @@ app.controller('myCtrl', function($scope) {
     label: 'Poll',
     subItem: { name: 'poll' }
   }, 
-  // {
-  //   id: 2,
-  //   label: 'Random',
-  //   subItem: { name: 'random' }
-  // }
+  {
+    id: 2,
+    label: 'Random',
+    subItem: { name: 'random' }
+  }
   ];
   $scope.chosenQuestion='';
   $scope.questions={};

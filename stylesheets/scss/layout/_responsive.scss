@@ -1,0 +1,12 @@
+@media screen and (max-width: $L){
+	.firebase-d3{
+		.d3{
+			overflow-x:scroll;
+			svg{
+				min-width: 1000px;
+				min-height: 570px;
+			}
+		}
+	}
+
+}

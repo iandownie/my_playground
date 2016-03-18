@@ -1,5 +1,7 @@
+$margin: 1em;
+
 body{
-	font-size: 1vw;
+	font-size: calc(7px + 0.8vw);
 }
 
 .content{
@@ -28,4 +30,33 @@ body{
 
 .justified{
 	@include justify(center, row);
+	&.space-between{
+		-webkit-box-pack:space-between;
+		-webkit-justify-content:space-between;
+		-ms-flex-pack:space-between;
+		justify-content:space-between;
+	}
+	&.column{
+		-webkit-flex-direction: column;
+		-webkit-box-direction: vartical;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+	&.space-around{
+		-webkit-box-pack:space-around;
+		-webkit-justify-content:space-around;
+		-ms-flex-pack:space-around;
+		justify-content:space-around;
+	}
+}
+
+.center-me{
+	@include center();
+}
+.center-me-vertical{
+	@include center(vertical);
+}
+
+.margin-top{
+	margin-top: $margin;
 }

@@ -1,10 +1,61 @@
 .firebase-d3{
+	font-size: calc(7px + 0.8vw);
+	width: calc(115px + 60vw);
 	text{
 		fill: white;
 		text-shadow: 0px 0px 5px #000000;
 		font-size: 3em;
 	}
-	g{
-		
+	h2{
+		padding: 0;
+		height: 0.8em;
+	}
+	h3{
+		height:0.8em;
+		margin-top: -0.4em;
+		margin-bottom: -0.2em;
+	}
+	.button{
+		width: 10em;
+	}
+	input{
+		font-size: 2em;
+		&.option{
+			width:30em;
+		}
+		&#stakeHoldersInput{
+			@include square(auto, 1.5em);
+			font-size: 2em;
+		}
+	}
+	form{
+		> div{
+			height: 5em;
+		}
+		div.margin-top button{
+			left:0;
+			transform: none;
+		}
+	}
+	select{
+		-webkit-appearance: none;
+		font-size: 2em;
+		width: 100%;
+		height: 1.3em;
+		border-radius: 0;
+		background: white;
+		border: 1px solid #CCCCCC;
+	}
+	select{
+		text-indent: 0.5em;
+		height: 1.5em;
+		font-size: 2em;
+		width: auto;
+	}
+	svg{
+		min-height: 40em;
+		[data-option]{
+			cursor: pointer;
+		}
 	}
 }

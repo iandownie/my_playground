@@ -3714,7 +3714,7 @@ header a.button {
 }
 
 body {
-  font-size: 1vw;
+  font-size: calc(7px + 0.8vw);
 }
 
 .content {
@@ -3755,6 +3755,44 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+.justified.space-between {
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+.justified.column {
+  -webkit-flex-direction: column;
+  -webkit-box-direction: vartical;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.justified.space-around {
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.center-me {
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+}
+
+.center-me-vertical {
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+}
+
+.margin-top {
+  margin-top: 1em;
 }
 
 #non-scalable.block-container {
@@ -4057,10 +4095,75 @@ circle.radio-button.on:hover {
   fill: #004d00;
 }
 
+.firebase-d3 {
+  font-size: calc(7px + 0.8vw);
+  width: calc(115px + 60vw);
+}
 .firebase-d3 text {
   fill: white;
   text-shadow: 0px 0px 5px #000000;
   font-size: 3em;
+}
+.firebase-d3 h2 {
+  padding: 0;
+  height: 0.8em;
+}
+.firebase-d3 h3 {
+  height: 0.8em;
+  margin-top: -0.4em;
+  margin-bottom: -0.2em;
+}
+.firebase-d3 .button {
+  width: 10em;
+}
+.firebase-d3 input {
+  font-size: 2em;
+}
+.firebase-d3 input.option {
+  width: 30em;
+}
+.firebase-d3 input#stakeHoldersInput {
+  width: auto;
+  height: 1.5em;
+  font-size: 2em;
+}
+.firebase-d3 form > div {
+  height: 5em;
+}
+.firebase-d3 form div.margin-top button {
+  left: 0;
+  transform: none;
+}
+.firebase-d3 select {
+  -webkit-appearance: none;
+  font-size: 2em;
+  width: 100%;
+  height: 1.3em;
+  border-radius: 0;
+  background: white;
+  border: 1px solid #CCCCCC;
+}
+.firebase-d3 select {
+  text-indent: 0.5em;
+  height: 1.5em;
+  font-size: 2em;
+  width: auto;
+}
+.firebase-d3 svg {
+  min-height: 40em;
+}
+.firebase-d3 svg [data-option] {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+  .firebase-d3 .d3 {
+    overflow-x: scroll;
+  }
+  .firebase-d3 .d3 svg {
+    min-width: 1000px;
+    min-height: 570px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

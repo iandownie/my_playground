@@ -18,41 +18,55 @@
       <link rel="import" href="/html_imports/header.html">
     </div>
   </head>
-  <body ng-app="CDMApp" ng-controller="myCtrl">
+  <body  ng-app="CDMApp" ng-controller="myCtrl">
     <div class='container'></div>
     <div id='messagesDiv'></div>
-    <form name="myForm" ng-show='d3Ready===false' class="animated fadeIn">
-        <h2>Question to Determine:</h2>
-        <input type='text' id='question' ng-model="question">
-        <h2>Number of Stakeholders:</h2>
-        <input type='number' id='stakeHoldersInput' min='2' max ='200' required ng-model="stakeholders">
-        <h2>Type of Decision</h2>
-        <select ng-options="decision as decision.label for decision in decisions track by decision.id" ng-model="decision" required></select>
-<!--         <h2>Number of Options:{{optionCount}}</h2>
-        <input type='range' id='optionCount' min='1', max='10' required ng-model="optionCount">
-        <span ng-bind="optionCount"></span>
- -->        <div ng-repeat="i in getNumber(options) track by $index">
-            <h3>Option: {{$index+1}}</h3>
-            <input type="text"  required ng-model="options[$index]">
-            <button ng-click="options.splice($index,1)">Remove Option</button>
-        </div>
-        <button ng-click="options.push('new option')" ng-hide="options.length>9">Add Option</button>
-        <button ng-click="d3Ready=true">View D3</button>
-        <button ng-click="submitQuestion()" ng-show="myForm.$valid" class='submit-question animated fadeIn'>Submit Question</button>
-    </form>
-    <div ng-show="d3Ready" class="animated fadeIn">
-        <form name="select">
-            <label>Select Question</label>
-            <select ng-options="question as question.title for question in questions track by question.date" ng-model="chosenQuestion" required></select>
-            <button ng-click="selectQuestion()" ng-show="select.$valid" class='button animated fadeIn'>View Poll</button>
+    <section class="firebase-d3 content">
+        <form name="myForm" ng-show='d3Ready===false' class="animated fadeIn">
+            <h2 class="margin-top">Question to Determine:</h2>
+            <input class="margin-top" type='text' id='question' ng-model="question">
+            <div class="justified center">
+                <h2 class="center-me-vertical">Number of Stakeholders:</h2>
+                <input type='number' id='stakeHoldersInput' class="center-me-vertical" min='2' max ='200' required ng-model="stakeholders">
+            </div>
+            <div class="justified center">
+                <h2 class="center-me-vertical">Type of Decision:</h2>
+                <select class="center-me-vertical" ng-options="decision as decision.label for decision in decisions track by decision.id" ng-model="decision" required></select>
+            </div>
+    <!--         <h2>Number of Options:{{optionCount}}</h2>
+            <input type='range' id='optionCount' min='1', max='10' required ng-model="optionCount">
+            <span ng-bind="optionCount"></span>
+     -->    <div ng-repeat="i in getNumber(options) track by $index">
+                <div class="margin-top justified center option">
+                    <h3>Option {{$index+1}}: </h3>
+                    <input type="text"  class="option" required ng-model="options[$index]">
+                </div>
+                <button class="button" ng-click="options.splice($index,1)">Remove Option</button>
+            </div>
+            <div class="margin-top justified space-between">
+                <button class="button" ng-click="options.push('new option')" ng-hide="options.length>9">Add Option</button>
+                <button ng-click="submitQuestion()" ng-show="myForm.$valid" class='button submit-question animated fadeIn'>Submit Question</button>
+                <button class="button" ng-click="d3Ready=true">View D3</button>
+            </div>
         </form>
-        <button ng-click="d3Ready=false">View Form</button>
-        <button ng-click="resetApp()">Reset App</button>
-        <!-- <button class='random-vote' ng-click="randomVote()">Vote Randomly</button> -->
-        <script src="js/firebase2.js"></script>
-        <section id="" class="d3 firebase-d3 content narrow block-container clearfix"><script src="js/d3-firebase.js"></script></section>
-        <button ng-click="deletePoll()" ng-show="chosenQuestion.title.length>0" class="button animated fadeIn">Delete Poll "{{chosenQuestion.title}}"</button>
-    </div>
+        <div ng-show="d3Ready" class="animated fadeIn">
+            <form name="select">
+                <div class="margin-top justified center">
+                    <h3 class="center-me-vertical">Select Question: </h3>
+                    <select class="center-me-vertical" ng-options="question as question.title for question in questions track by question.date" ng-model="chosenQuestion" required></select>
+                </div>
+                <div class="margin-top justified space-between">
+                    <button class="button" ng-click="d3Ready=false">View Form</button>
+                    <button ng-click="deletePoll()" ng-show="chosenQuestion.title.length>0" class="button animated fadeIn">Delete Poll</button>
+                    <button ng-click="selectQuestion()" ng-show="select.$valid" class='button animated fadeIn'>View Poll</button>
+                    <button class="button" ng-click="resetApp()">Reset App</button>
+                </div>
+            </form>
+            <!-- <button class='random-vote' ng-click="randomVote()">Vote Randomly</button> -->
+            <script src="js/firebase2.js"></script>
+            <section id="" class="d3 block-container clearfix"><script src="js/d3-firebase.js"></script></section>
+        </div>
+    </section>
   </body>
   <script src="js/myApp.js"></script>
   <script src="js/myCtrl.js"></script>

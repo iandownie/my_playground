@@ -207,7 +207,7 @@ function build(){
 			.attr("viewBox", "0 0 "+(width + margin.left + margin.right).toString()+" "+(height + margin.top + margin.bottom).toString())
 			.attr("preserveAspectRatio", "xMinYMin meet").attr("width", width)
 			.attr("width", '100%')
-			.attr("height", height + margin.top + margin.bottom)
+			.attr("height", 0)
 			.attr('class', 'animated fadeIn')
 		.append("g")
 			.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
