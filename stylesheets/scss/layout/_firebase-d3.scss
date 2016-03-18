@@ -21,7 +21,7 @@
 	input{
 		font-size: 2em;
 		&.option{
-			width:30em;
+			width:25em;
 		}
 		&#stakeHoldersInput{
 			@include square(auto, 1.5em);

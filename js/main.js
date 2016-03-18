@@ -108,45 +108,6 @@ function addEvent( obj, type, fn ) {
   }
 }
 
-// var gridItems=[
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/06.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/07.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/08.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/09.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/01.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/02.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/03.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/04.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/05.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/06.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/07.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/08.jpg', itemText:'Beijing, China', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-//     {itemImage:'/_assets/images/09.jpg', itemText:'final, entry', itemFact: 'The first international Hilton hotel opened outside the United States was the Hilton Istanbul Bosphorus'},
-// ];
-
 var gridItems=[
   {
     "itemText": "Algeria",

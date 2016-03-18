@@ -4120,7 +4120,7 @@ circle.radio-button.on:hover {
   font-size: 2em;
 }
 .firebase-d3 input.option {
-  width: 30em;
+  width: 25em;
 }
 .firebase-d3 input#stakeHoldersInput {
   width: auto;

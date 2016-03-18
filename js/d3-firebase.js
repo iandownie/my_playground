@@ -1,3 +1,6 @@
+// reference to our Firebase instance
+var fb = new Firebase('https://scorching-heat-2457.firebaseio.com/');
+
 // Get data from Firebase
 var task={};
 var myDataRef = new Firebase('https://scorching-heat-2457.firebaseio.com/');
