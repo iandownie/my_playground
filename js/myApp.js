@@ -51,6 +51,13 @@ app.controller('myCtrl', function($scope) {
     keepUpdated();
   };
 
+  $scope.resetApp = function(){
+    fb.set(null);
+    $scope.d3Ready=false;
+    setCookie('voteStatus', 'hasnt-voted');
+    wipeD3();
+  };
+
   //Submits a new question, initiating a new poll.
   $scope.submitQuestion = function(){
     var theOptions=[];
@@ -92,16 +99,13 @@ app.controller('myCtrl', function($scope) {
   $scope.updateQuestions=function(){
     fb.once("value", function(snapshot) {
       $scope.questions=snapshot.val();
-      // build();
-      // keepUpdated();
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
   };
 
   // Votes for a random option
-  $scope.randomVote = function(){
-    randomVoter();
-  };
-  
+  // $scope.randomVote = function(){
+  //   randomVoter();
+  // };
 });

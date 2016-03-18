@@ -47,11 +47,11 @@
             <button ng-click="selectQuestion()" ng-show="select.$valid" class='button animated fadeIn'>View Poll</button>
         </form>
         <button ng-click="d3Ready=false">View Form</button>
-        <button ng-click="d3Ready=false" class="reset-app">Reset App</button>
+        <button ng-click="resetApp()">Reset App</button>
         <!-- <button class='random-vote' ng-click="randomVote()">Vote Randomly</button> -->
         <script src="js/firebase2.js"></script>
         <section id="" class="d3 firebase-d3 content narrow block-container clearfix"><script src="js/d3-firebase.js"></script></section>
-        <button ng-click="deletePoll()" ng-show="chosenQuestion!==''" class="button animated fadeIn">Delete Poll "{{chosenQuestion.title}}"</button>
+        <button ng-click="deletePoll()" ng-show="chosenQuestion.title.length>0" class="button animated fadeIn">Delete Poll "{{chosenQuestion.title}}"</button>
     </div>
   </body>
   <script src="js/myApp.js"></script>

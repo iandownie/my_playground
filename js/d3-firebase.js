@@ -71,7 +71,7 @@ function showWinner(){
 	var rect='';
 	task.options.forEach(function(e, i){
 		if(e.count===highest.count){
-			rect = chart.select('rect.'+e.name.split(' ').join('-'));
+			rect = chart.select('rect.option-'+i);
 			(function repeat() {
 				rect = rect.transition().duration(1500).delay(500)
 						.style("opacity", 0)
@@ -90,7 +90,7 @@ function showWinner(){
 // 		if(0===votes){
 // 			task.options.forEach(function(e, i){
 // 				if(e.count===highest.count){
-// 					var rect = chart.select('rect.'+e.name.split(' ').join('-'));
+// 					var rect = chart.select('rect.option-'+i);
 // 					showWinner(rect);
 // 				}
 // 			});
@@ -106,6 +106,7 @@ function showWinner(){
 // 	}, 500);
 // }
 
+//Assigns a vote to the voted for option
 function vote(votedOption){
 	if(0===votes){
 		alert('This poll has already finished.');
@@ -125,14 +126,14 @@ function findMaxNeed(){
 				pluralityFunc();
 				if(votes+secondHighest.count<highest.count){
 					votes=0;
-				}else{
-					requiredVotes=highest.count + 1 + Math.floor((votes-(highest.count - secondHighest.count))/2);
 				}
+				requiredVotes=highest.count + 1 + Math.floor((votes-(highest.count - secondHighest.count))/2);
 			break;
 		}
 	}
 }
 
+// Function that counts votes.
 function countVotes(){
 	var voteCounter = task.type.participantCount;
 	task.options.forEach(function(e,i){
@@ -145,9 +146,10 @@ function countVotes(){
 function updateData() {
 	findMaxNeed();
 	task.options.forEach(function(d, i){
-		chart.select('rect.'+d.name.split(' ').join('-'))
+		chart.select('rect.option-'+i)
 			.transition().duration(450)
 			.attr("y", y(+d.count))
+			.attr('stroke-width', 0)
 			.attr("height", height - y(d.count));
 	});
 	y.domain([0,requiredVotes]);
@@ -174,11 +176,6 @@ function registerFunctions(){
 		myDataRef.set(task);
 		wipeD3();
 		build();
-	});
-	$('.reset-app').click(function(){
-		myDataRef.set('');
-		setCookie('voteStatus', 'hasnt-voted');
-		wipeD3();
 	});
 	$('.submit-question').click(function(){
 		wipeD3();
@@ -258,7 +255,7 @@ function build(){
 		.attr("y", function(d) { return y(+d.count); })
 		.attr("height", function(d) { return height - y( +d.count); })
 		.attr("width", barWidth - 1)
-		.attr("class", function(d) { return d.name.split(' ').join('-'); })
+		.attr("class", function(d, i) { return 'option-'+i; })
 		.attr('data-option', function(d, i){ return i; })
 		.style('fill', function(d, i) { return range[i]; })
 		.style('opacity', 1);
