@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>NJI Test Site</title>
+    <meta name="description" content="NJI Test Site 2016">
+    <meta name="author" content="NJI Media">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="_assets/favicon.ico">
+    <link rel="stylesheet" href="stylesheets/css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="_assets/js/jquery-2.1.1.min.js"></script>
+    <script src="_assets/js/jquery.cycle2.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- This Page's Unique Dependencies -->
+    <script src="_assets/js/d3.js"></script>
+    <script src="_assets/js/topojson.v1.min.js"></script>
+    <script src="_assets/js/queue.v1.min.js"></script>
+    <div class='main-sections'>
+      <link rel="import" href="/html_imports/header.html">
+    </div>
+  </head>
+  <body id="district-map" ng-app="districtApp" ng-controller="districtCtrl">
+    <div class='container'></div>
+    <div id='messagesDiv'></div>
+    <section class="firebase-d3 content">
+        <button class="button" onclick="$('.districts, .district-boundaries').toggle(); if($(this).text()==='District View'){$(this).text('State Mode');}else{$(this).text('District View');}">District View</button>
+        <div class='results'>
+            <div class='state'></div>
+            <div class='district'></div>
+            <div class='jobs'></div>
+            <div class='other'></div>
+        </div>
+        <div class="animated fadeIn">
+            <section id="" class="d3 block-container clearfix"><script src="js/district-map.js"></script></section>
+        </div>
+    </section>
+  </body>
+  <script src="js/districtApp.js"></script>
+  <script src="js/districtCtrl.js"></script>
+</html>

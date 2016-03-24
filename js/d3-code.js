@@ -178,7 +178,7 @@ d3.csv("data/population.csv", function(error, data) {
 	data.forEach(function(d) {
 		for(var key in d){
 			if(key !== 'year'){
-				d[key] = +d[key];
+				d[key] = +d[key];//Coerces data string into number
 			}
 		}
 	});

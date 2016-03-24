@@ -4156,6 +4156,49 @@ circle.radio-button.on:hover {
   cursor: pointer;
 }
 
+#district-map * {
+  -webkit-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+#district-map path {
+  stroke-linejoin: round;
+  fill: blue;
+  stroke-linecap: round;
+}
+#district-map .background {
+  fill: white;
+  pointer-events: all;
+}
+#district-map .districts {
+  fill: #bbb;
+}
+#district-map .districts
+path {
+  -webkit-transition: fill 0.5s;
+  -ms-transition: fill 0.5s;
+  -o-transition: fill 0.5s;
+  transition: fill 0.5s;
+  fill: transparent;
+}
+#district-map .districts
+path:hover {
+  fill: orange;
+}
+#district-map .district-boundaries {
+  pointer-events: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+#district-map .state-boundaries {
+  pointer-events: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
 @media screen and (max-width: 1200px) {
   .firebase-d3 .d3 {
     overflow-x: scroll;
