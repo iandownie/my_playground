@@ -2,6 +2,9 @@
 	*{
 		@include transition(none);
 	}
+	svg > g{
+		font-size: 1.5px;
+	}
 	path {
 		stroke-linejoin: round;
 		fill: blue;
@@ -13,31 +16,31 @@
 		pointer-events: all;
 	}
 
-	.districts {
-		fill: #bbb;
-	}
-
-	.districts 
-		path{
-			@include transition(fill 0.5s);
-			fill: transparent;
-			&:hover {
-				fill: orange;
+	.districts path{
+		@include transition(fill 0.5s);
+		fill: transparent;
+		&:hover {
+			fill: orange;
 		}
 	}
-
 	.district-boundaries {
 		pointer-events: none;
 		fill: none;
 		stroke: #fff;
-		stroke-width: .5px;
+		stroke-width: .5em;
 	}
 
+	#states path{
+		@include transition(fill 0.5s);
+		&:hover {
+			fill: orange;
+		}
+	}
 	.state-boundaries {
 		pointer-events: none;
 		fill: none;
 		stroke: #fff;
-		stroke-width: 1.5px;
+		stroke-width: 1em;
 	}
 
 }

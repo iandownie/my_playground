@@ -4162,6 +4162,9 @@ circle.radio-button.on:hover {
   -o-transition: none;
   transition: none;
 }
+#district-map svg > g {
+  font-size: 1.5px;
+}
 #district-map path {
   stroke-linejoin: round;
   fill: blue;
@@ -4171,32 +4174,36 @@ circle.radio-button.on:hover {
   fill: white;
   pointer-events: all;
 }
-#district-map .districts {
-  fill: #bbb;
-}
-#district-map .districts
-path {
+#district-map .districts path {
   -webkit-transition: fill 0.5s;
   -ms-transition: fill 0.5s;
   -o-transition: fill 0.5s;
   transition: fill 0.5s;
   fill: transparent;
 }
-#district-map .districts
-path:hover {
+#district-map .districts path:hover {
   fill: orange;
 }
 #district-map .district-boundaries {
   pointer-events: none;
   fill: none;
   stroke: #fff;
-  stroke-width: .5px;
+  stroke-width: .5em;
+}
+#district-map #states path {
+  -webkit-transition: fill 0.5s;
+  -ms-transition: fill 0.5s;
+  -o-transition: fill 0.5s;
+  transition: fill 0.5s;
+}
+#district-map #states path:hover {
+  fill: orange;
 }
 #district-map .state-boundaries {
   pointer-events: none;
   fill: none;
   stroke: #fff;
-  stroke-width: 1.5px;
+  stroke-width: 1em;
 }
 
 @media screen and (max-width: 1200px) {

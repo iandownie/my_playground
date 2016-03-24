@@ -1,9 +1,10 @@
 // Set the dimensions of the canvas / graph
-var margin = {top: 120, right: 550, bottom: 60, left: 270},
+var margin = {top: 120, right: 0, bottom: 60, left: 0},
 	width = 2600 - margin.left - margin.right,
 	height = 1300 - margin.top - margin.bottom,
 	textSpacer=20,
 	verticalSpace=45,
+	active = d3.select(null),
 	districtData={},
 	stateData={};
 
@@ -17,11 +18,14 @@ var path = d3.geo.path()
 var zoom = d3.behavior.zoom()
     .translate(projection.translate())
     .scale(projection.scale())
+    .center([width / 2, height / 2])
     .scaleExtent([height, 8 * height])
     .on("zoom", zoomed);
 
 var svg = d3.select("body").append("svg")
-	.attr("width", width)
+	.attr("viewBox", "0 0 "+(width + margin.left + margin.right).toString()+" "+(height + margin.top + margin.bottom).toString())
+	.attr("preserveAspectRatio", "xMinYMin meet")
+	.attr("width", '100%')
 	.attr("height", height);
 
 var g = svg.append("g")
@@ -42,6 +46,9 @@ d3.csv("data/district-data.csv", function(error, data) {
 d3.csv("data/state-data.csv", function(error, data) { 
 	stateData = data;
 });
+
+d3.selectAll("button[data-zoom]")
+    .on("click", clicked);
 
 	queue()
 		.defer(d3.json, "/data/us.json")
@@ -103,20 +110,60 @@ function ready(error, us, congress) {
 		.attr("d", path);
 }
 
+function reset() {
+  active.classed("active", false);
+  active = d3.select(null);
+
+  g.transition()
+      .duration(750)
+      .style("font-size", "1.5px")
+      .attr("transform", "");
+}
 function clicked(d) {
-	var centroid = path.centroid(d),
-		translate = projection.translate();
+  if (active.node() === this) return reset();
+  active.classed("active", false);
+  active = d3.select(this).classed("active", true);
 
-	projection.translate([
-		translate[0] - centroid[0] + width / 2,
-		translate[1] - centroid[1] + height / 2
-	]);
+  var bounds = path.bounds(d),
+      dx = bounds[1][0] - bounds[0][0],
+      dy = bounds[1][1] - bounds[0][1],
+      x = (bounds[0][0] + bounds[1][0]) / 2,
+      y = (bounds[0][1] + bounds[1][1]) / 2,
+      scale = .9 / Math.max(dx / width, dy / height),
+      translate = [width / 2 - scale * x, height / 2 - scale * y];
 
-	zoom.translate(projection.translate());
+  g.transition()
+      .duration(750)
+      .style("font-size", 6 / scale + "px")
+      .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+}
 
-	g.selectAll("path").transition()
-		.duration(700)
-		.attr("d", path);
+function clicked() {
+  svg.call(zoom.event); // https://github.com/mbostock/d3/issues/2387
+
+  // Record the coordinates (in data space) of the center (in screen space).
+  var center0 = zoom.center();
+  var translate0 = zoom.translate();
+  var coordinates0 = coordinates(center0);
+  zoom.scale(zoom.scale() * Math.pow(2, +this.getAttribute("data-zoom")));
+
+  // Translate back to the center.
+  var center1 = point(coordinates0);
+  zoom.translate([translate0[0] + center0[0] - center1[0], translate0[1] + center0[1] - center1[1]]);
+
+  svg.transition().duration(750).call(zoom.event);
+}
+
+function coordinates(point) {
+  var scale = zoom.scale();
+  var translate = zoom.translate();
+  return [(point[0] - translate[0]) / scale, (point[1] - translate[1]) / scale];
+}
+
+function point(coordinates) {
+  var scale = zoom.scale();
+  var translate = zoom.translate();
+  return [coordinates[0] * scale + translate[0], coordinates[1] * scale + translate[1]];
 }
 
 function zoomed() {

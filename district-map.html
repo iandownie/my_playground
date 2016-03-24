@@ -24,7 +24,12 @@
     <div class='container'></div>
     <div id='messagesDiv'></div>
     <section class="firebase-d3 content">
-        <button class="button" onclick="$('.districts, .district-boundaries').toggle(); if($(this).text()==='District View'){$(this).text('State Mode');}else{$(this).text('District View');}">District View</button>
+        
+        <div class="buttons">
+          <button class="button" onclick="$('.districts, .district-boundaries').toggle(); if($(this).text()==='District View'){$(this).text('State Mode');}else{$(this).text('District View');}">District View</button>
+          <button data-zoom="+1">Zoom In</button>
+          <button data-zoom="-1">Zoom Out</button>
+        </div>
         <div class='results'>
             <div class='state'></div>
             <div class='district'></div>
