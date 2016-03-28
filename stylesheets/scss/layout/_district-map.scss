@@ -10,7 +10,20 @@
 		fill: blue;
 		stroke-linecap: round;
 	}
-
+	.results{
+		@include position(absolute);
+		border: ridge gray 3px;
+		@include border-radius(5px);
+		background-color: #ddd;
+		padding: 1em;
+		h3{
+			margin: -1em;
+			margin-bottom: 1em;
+			@include square(calc(100% + 2em), 1.5em);
+			background-color: #eee;
+			border-bottom: ridge gray 3px;
+		}
+	}
 	.background {
 		fill: white;
 		pointer-events: all;
@@ -19,7 +32,7 @@
 	.districts path{
 		@include transition(fill 0.5s);
 		fill: transparent;
-		&:hover {
+		&:hover, &.active {
 			fill: orange;
 		}
 	}
@@ -32,7 +45,7 @@
 
 	#states path{
 		@include transition(fill 0.5s);
-		&:hover {
+		&:hover, &.active {
 			fill: orange;
 		}
 	}
@@ -42,5 +55,7 @@
 		stroke: #fff;
 		stroke-width: 1em;
 	}
-
+	.content{
+		position: static;
+	}
 }

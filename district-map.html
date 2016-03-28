@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="_assets/js/jquery-2.1.1.min.js"></script>
     <script src="_assets/js/jquery.cycle2.min.js"></script>
+    <script src="_assets/js/jquery-ui/jquery-ui.min.js"></script>
     <script src="js/main.js"></script>
     <!-- This Page's Unique Dependencies -->
     <script src="_assets/js/d3.js"></script>
@@ -25,16 +26,30 @@
     <div id='messagesDiv'></div>
     <section class="firebase-d3 content">
         
-        <div class="buttons">
-          <button class="button" onclick="$('.districts, .district-boundaries').toggle(); if($(this).text()==='District View'){$(this).text('State Mode');}else{$(this).text('District View');}">District View</button>
+        <div class="justified">
           <button data-zoom="+1">Zoom In</button>
+          <button data-zoom="0">Zoom Home</button>
           <button data-zoom="-1">Zoom Out</button>
         </div>
+        <button class="button view-mode">District View</button>
+        <form id="locator" >
+          <select class='select state' value ='', name="select-state" style="display: none;"></select>
+          <input class='zipcode' type="text" value='' placeholder='Enter your Zipcode' name="zip" pattern='\d{5}-?(\d{4})?'>
+        </form>
+        <button class='button' type="submit" form="locator" value="Submit">Find District</button>
         <div class='results'>
+          <h3>Draggable Data Panel</h3>
+          <div class="invalid-input"></div>
+          <div class=valid-results>
             <div class='state'></div>
             <div class='district'></div>
             <div class='jobs'></div>
-            <div class='other'></div>
+            <div class='state-only'>
+              <div class='total'></div>
+              <div class='goods'></div>
+              <div class='services'></div>
+            </div>
+          </div>
         </div>
         <div class="animated fadeIn">
             <section id="" class="d3 block-container clearfix"><script src="js/district-map.js"></script></section>

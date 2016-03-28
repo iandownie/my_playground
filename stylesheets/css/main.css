@@ -3795,6 +3795,10 @@ body {
   margin-top: 1em;
 }
 
+.ui-draggable {
+  cursor: move;
+}
+
 #non-scalable.block-container {
   height: 900px;
   max-height: calc(197px + 32px);
@@ -4170,6 +4174,23 @@ circle.radio-button.on:hover {
   fill: blue;
   stroke-linecap: round;
 }
+#district-map .results {
+  position: absolute;
+  border: ridge gray 3px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #ddd;
+  padding: 1em;
+}
+#district-map .results h3 {
+  margin: -1em;
+  margin-bottom: 1em;
+  width: calc(100% + 2em);
+  height: 1.5em;
+  background-color: #eee;
+  border-bottom: ridge gray 3px;
+}
 #district-map .background {
   fill: white;
   pointer-events: all;
@@ -4181,7 +4202,7 @@ circle.radio-button.on:hover {
   transition: fill 0.5s;
   fill: transparent;
 }
-#district-map .districts path:hover {
+#district-map .districts path:hover, #district-map .districts path.active {
   fill: orange;
 }
 #district-map .district-boundaries {
@@ -4196,7 +4217,7 @@ circle.radio-button.on:hover {
   -o-transition: fill 0.5s;
   transition: fill 0.5s;
 }
-#district-map #states path:hover {
+#district-map #states path:hover, #district-map #states path.active {
   fill: orange;
 }
 #district-map .state-boundaries {
@@ -4204,6 +4225,9 @@ circle.radio-button.on:hover {
   fill: none;
   stroke: #fff;
   stroke-width: 1em;
+}
+#district-map .content {
+  position: static;
 }
 
 @media screen and (max-width: 1200px) {
