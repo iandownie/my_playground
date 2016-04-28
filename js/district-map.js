@@ -2,6 +2,8 @@
 var margin = {top: 120, right: 0, bottom: 60, left: 0},
 	width = 2600 - margin.left - margin.right,
 	height = 1300 - margin.top - margin.bottom,
+	center=[width/2, height/2],
+	translate=[0,0],
 	zoomOffset= 450,
 	textSpacer=20,
 	verticalSpace=45,
@@ -20,11 +22,10 @@ var path = d3.geo.path()
 	.projection(projection);
 
 var zoom = d3.behavior.zoom()
-	.translate(projection.translate())
-	.scale(projection.scale())
-	.center([width / 2, height / 2])
-	.scaleExtent([height, 8 * height])
-	.on("zoom", zoomed);
+    .translate([0, 0])
+    .scale(1)
+    .scaleExtent([1, 8])
+    .on("zoom", zoomed);
 
 var svg = d3.select("body").append("svg")
 	.attr("viewBox", "0 0 "+(width + margin.left + margin.right).toString()+" "+(height + margin.top + margin.bottom).toString())
@@ -32,14 +33,9 @@ var svg = d3.select("body").append("svg")
 	.attr("width", '100%')
 	.attr("height", height);
 
-var g = svg.append("g")
-	.call(zoom);
+var g = svg.append("g");
 
-g.append("rect")
-	.attr("class", "background")
-	.attr("width", width)
-	.attr("height", height)
-	.attr('fill', 'white');
+svg.call(zoom);
 
 d3.csv("data/district-data.csv", function(error, data) { 
 	districtData = data;
@@ -61,6 +57,9 @@ d3.csv("data/zipcode-data.csv", function(error, data) {
 
 d3.selectAll("form#locator")
 	.on("submit", locate);
+
+d3.selectAll('form#locator select')
+	.on('change', locate);
 
 d3.selectAll(".view-mode")
 	.on('click', changeView);
@@ -105,11 +104,6 @@ function ready(error, us, congress) {
 	    .on('click.customize', function(d){ setData(d, 'state'); })
 		.attr("data-state", function(d) { return d.id; });
 
-	// g.append("path")
-	// 	.datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-	// 	.attr("class", "state-boundaries")
-	// 	.attr("d", path);
-
 	g.append("g")
 		.attr("class", "districts")
 		.attr("clip-path", "url(#clip-land)")
@@ -122,11 +116,6 @@ function ready(error, us, congress) {
 		.attr("data-district", function(d) { return d.id; })
 	.append("title")
 		.text(function(d) { return "id="+d.id; });
-
-	// g.append("path")
-	// 	.attr("class", "district-boundaries")
-	// 	.datum(topojson.mesh(congress, congress.objects.districts, function(a, b) { return a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0); }))
-	// 	.attr("d", path);
 }
 
 // Change's the map view mode
@@ -196,7 +185,7 @@ function zooming() {
 	if('0'===this.getAttribute("data-zoom")){
 		reset();
 		svg.call(zoom.event);
-		var center0 = zoom.center();
+		var center0 = center;
 		var translate0 = zoom.translate();
 		var coordinates0 = coordinates(center0);
 		zoom.scale(zoom.scale()*0);
@@ -206,10 +195,10 @@ function zooming() {
 		svg.transition().duration(750).call(zoom.event);
 	}else{
 		if(0===activeArea.length){
-			svg.call(zoom.event); // https://github.com/mbostock/d3/issues/2387
+			svg.call(zoomed); // https://github.com/mbostock/d3/issues/2387
 
 			// Record the coordinates (in data space) of the center (in screen space).
-			var center0 = zoom.center();
+			var center0 = center;
 			var translate0 = zoom.translate();
 			var coordinates0 = coordinates(center0);
 			zoom.scale(zoom.scale() * Math.pow(2, +this.getAttribute("data-zoom")));
@@ -238,9 +227,11 @@ function point(coordinates) {
 }
 
 function zoomed() {
-	projection.translate(d3.event.translate).scale(d3.event.scale);
-	g.selectAll("path").attr("d", path);
+  g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+  g.select(".state-border").style("stroke-width", 1.5 / d3.event.scale + "px");
+  g.select(".county-border").style("stroke-width", .5 / d3.event.scale + "px");
 }
+
 
 // Locate district that matches zipcode
 function locate(){
@@ -260,7 +251,7 @@ function locate(){
 			$('path[data-district="'+district.id+'"]').d3Click();
 		}
 	}else{
-		var state= $(this).children('.select.state')[0].value;
+		var state= $(this)[0].value;
 		state = lookupState[state];
 		state.id=state.statecode;
 		setData(state, 'state');
