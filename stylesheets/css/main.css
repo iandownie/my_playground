@@ -4201,6 +4201,8 @@ circle.radio-button.on:hover {
   -o-transition: fill 0.5s;
   transition: fill 0.5s;
   fill: transparent;
+  stroke: white;
+  stroke-width: 0.5px;
 }
 #district-map .districts path:hover, #district-map .districts path.active {
   fill: orange;
@@ -4216,6 +4218,8 @@ circle.radio-button.on:hover {
   -ms-transition: fill 0.5s;
   -o-transition: fill 0.5s;
   transition: fill 0.5s;
+  stroke: white;
+  stroke-width: 1px;
 }
 #district-map #states path:hover, #district-map #states path.active {
   fill: orange;

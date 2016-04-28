@@ -105,10 +105,10 @@ function ready(error, us, congress) {
 	    .on('click.customize', function(d){ setData(d, 'state'); })
 		.attr("data-state", function(d) { return d.id; });
 
-	g.append("path")
-		.datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-		.attr("class", "state-boundaries")
-		.attr("d", path);
+	// g.append("path")
+	// 	.datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+	// 	.attr("class", "state-boundaries")
+	// 	.attr("d", path);
 
 	g.append("g")
 		.attr("class", "districts")
@@ -123,10 +123,10 @@ function ready(error, us, congress) {
 	.append("title")
 		.text(function(d) { return "id="+d.id; });
 
-	g.append("path")
-		.attr("class", "district-boundaries")
-		.datum(topojson.mesh(congress, congress.objects.districts, function(a, b) { return a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0); }))
-		.attr("d", path);
+	// g.append("path")
+	// 	.attr("class", "district-boundaries")
+	// 	.datum(topojson.mesh(congress, congress.objects.districts, function(a, b) { return a !== b && (a.id / 1000 | 0) === (b.id / 1000 | 0); }))
+	// 	.attr("d", path);
 }
 
 // Change's the map view mode
@@ -244,6 +244,7 @@ function zoomed() {
 
 // Locate district that matches zipcode
 function locate(){
+	d3.event.preventDefault();
 	if('district'===viewMode){
 		var zipcode=$(this).children('.zipcode')[0].value;
 		if(zipcode.length>5){
