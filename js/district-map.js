@@ -1,7 +1,7 @@
 // Set the dimensions of the canvas / graph
-var margin = {top: 120, right: 0, bottom: 60, left: 0},
-	width = 2600 - margin.left - margin.right,
-	height = 1300 - margin.top - margin.bottom,
+var margin = {top: 80, right: 80, bottom: 60, left: 120},
+	width = 900 - margin.left - margin.right,
+	height = 600 - margin.top - margin.bottom,
 	center=[width/2, height/2],
 	translate=[0,0],
 	zoomOffset= 450,
@@ -28,7 +28,7 @@ var zoom = d3.behavior.zoom()
     .on("zoom", zoomed);
 
 var svg = d3.select("body").append("svg")
-	.attr("viewBox", "0 0 "+(width + margin.left + margin.right).toString()+" "+(height + margin.top + margin.bottom).toString())
+	.attr("viewBox", -margin.left*1.5+" "+-margin.top*1.5+" "+(width + margin.left*2 + margin.right*2).toString()+" "+(height + margin.top*2 + margin.bottom*2).toString())
 	.attr("preserveAspectRatio", "xMinYMin meet")
 	.attr("width", '100%')
 	.attr("height", height);
@@ -64,7 +64,7 @@ d3.selectAll('form#locator select')
 d3.selectAll(".view-mode")
 	.on('click', changeView);
 
-d3.selectAll("button[data-zoom]")
+d3.selectAll("button[data-zoom], .results .close")
 	.on("click", zooming);
 
 d3.selectAll("select.state")
@@ -114,8 +114,8 @@ function ready(error, us, congress) {
 		.on("click.init", clicked)
 		.on('click.customize', function(d){ setData(d, 'district'); })
 		.attr("data-district", function(d) { return d.id; })
-	.append("title")
-		.text(function(d) { return "id="+d.id; });
+	// .append("title")
+	// 	.text(function(d) { return "id="+d.id; });
 }
 
 // Change's the map view mode
@@ -182,7 +182,8 @@ function clicked(d) {
 
 function zooming() {
 	var activeArea=$('path.active');
-	if('0'===this.getAttribute("data-zoom")){
+	var calledZoom = this.getAttribute("data-zoom")
+	if('0'=== calledZoom || undefined === calledZoom){
 		reset();
 		svg.call(zoom.event);
 		var center0 = center;
@@ -201,7 +202,7 @@ function zooming() {
 			var center0 = center;
 			var translate0 = zoom.translate();
 			var coordinates0 = coordinates(center0);
-			zoom.scale(zoom.scale() * Math.pow(2, +this.getAttribute("data-zoom")));
+			zoom.scale(zoom.scale() * Math.pow(2, + calledZoom));
 
 			// Translate back to the center.
 			var center1 = point(coordinates0);
