@@ -58,6 +58,9 @@ d3.csv("data/zipcode-data.csv", function(error, data) {
 d3.selectAll("form#locator")
 	.on("submit", locate);
 
+d3.selectAll("input.zipcode")
+	.on("keydown", resetError);
+
 d3.selectAll('form#locator select')
 	.on('change', locate);
 
@@ -244,7 +247,7 @@ function locate(){
 		}
 		var district = lookupZipcode[zipcode];
 		if (undefined===district){
-			$('.invalid-input').text('Zipcode not found.');
+			$('.invalid-input').show().text('Zipcode not found.');
 			clearResults();
 		}else{
 			district.id=lookupDistrict[district.districtcode].districtcode;
@@ -258,6 +261,10 @@ function locate(){
 		setData(state, 'state');
 		$('path[data-state="'+state.id+'"]').d3Click();
 	}
+}
+
+function resetError(){
+	$('.invalid-input').hide();
 }
 
 // Make a convenient data structure to find matching data

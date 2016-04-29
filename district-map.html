@@ -34,12 +34,13 @@
         <form id="locator" >
           <select class='select state' value ='', name="select-state" style="display: none;"></select>
           <input class='zipcode' type="text" value='' placeholder='Enter your Zipcode' name="zip" pattern='\d{5}-?(\d{4})?'>
+          <div class="invalid-input" style="display: none;">Zipcode Not Found</div>
         </form>
         <button class='button' type="submit" form="locator" value="Submit">Find District</button>
         <div class='results'>
           <h3>Draggable Data Panel</h3>
           <div class="close">X</div>
-          <div class="invalid-input"></div>
+          
           <div class=valid-results>
             <div class='state'></div>
             <div class='district'></div>
